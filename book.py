@@ -807,8 +807,8 @@ def track():
                 cur=mysql.connection.cursor()
                 cur.execute("select * from stock")
                 mysql.connection.commit()
-                r=cur.fetchall()
-                for i in r:
+                rj=cur.fetchall()
+                for i in rj:
                     l1 = ' '.join([str(elem) for elem in [i[key] for key in ['ISBN','Name','AName','Publication','Genre','About']]])
                     o=l1.replace(" ", "")
                     o=o.lower()
@@ -854,14 +854,14 @@ def trac():
                 mysql.connection.commit()
                 ru=cur.fetchall()
                 for i in ru:
-                    l1 = ' '.join([str(elem) for elem in [i[key] for key in ['ISBN','Name','AName','Publication','Genre','About']]])
-                    o=l1.replace(" ", "")
+                    l12 = ' '.join([str(elem) for elem in [i[key] for key in ['ISBN','Name','AName','Publication','Genre','About']]])
+                    o=l12.replace(" ", "")
                     o=o.lower()
                     for j in ds.split():
                         j=j.lower()
                         if j in o:
-                            l.append(i)
-                session['s']=l
+                            l11.append(i)
+                session['s']=l11
                 session['p']=len(session['s'])
                 return redirect("/s")
         if request.form.get("dl"):
