@@ -3,28 +3,26 @@
 <form action="" method="POST">
         <br>
         <table class="table table-hover">
-                <thead>
+        <thead>
         <tr>
         {% for i in h %}
         <th scope="col">
         {{i}}
-        </th>
-                <tbody>
-        {% endfor %}
-                </thead>
+        </th>       
+        {% endfor %}       
         </tr>
+        </thead>
+        <tbody>
         {% for i in l1 %}
-        <tr>
-                <thead>
+        <tr>       
         {% for j in i %}
         <td>
         {{j}}
         </td>
         {% endfor %}
-        </thead>
         </tr>
         {% endfor %}
-                </tbody>
+         </tbody>
         </table>
         <p>
         {% with messages=get_flashed_messages() %}
