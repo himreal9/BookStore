@@ -10,11 +10,7 @@ app.config['MYSQL_DB'] = 'sql12386740'
 app.config['MYSQL_HOST'] = 'sql12.freemysqlhosting.net'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 mysql=MySQL(app)
-l={'0','1','2','3','4','5','6','7','8','9'}
-ko=''
 
-for i in random.sample(l, 4):
-    ko=ko+i
 det=[]
 
 @app.route('/con',methods=['POST','GET']) 
@@ -547,6 +543,10 @@ def ress():
             cur.execute("select * from user where unam like %s",(us,))
             mysql.connection.commit()
             r=cur.fetchall()
+            l={'0','1','2','3','4','5','6','7','8','9'}
+            ko=''
+            for i in random.sample(l, 4):
+                ko=ko+i
             if len(r)>0:
                 toaddr  =us
                 passwor = "bbb54321"
