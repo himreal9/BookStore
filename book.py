@@ -11,8 +11,6 @@ app.config['MYSQL_HOST'] = 'sql12.freemysqlhosting.net'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 mysql=MySQL(app)
 
-det=[]
-
 @app.route('/con',methods=['POST','GET']) 
 def con():
     if request.method=='POST':
@@ -69,6 +67,8 @@ def con():
     
 @app.errorhandler(404) 
 def not_found(e):
+    if 'det' not in session:
+        session['det'] = []
     d=request.url
     na=''
     for i in d[::-1]:
@@ -110,12 +110,16 @@ def not_found(e):
         
         if request.form.get("cart"):
             q = request.form['qua']
+            det = session['det']
             det.append([rrm[0]]*int(q))
+            session['det'] = det
             return redirect("/"+num[1:])
         
         if request.form.get("buy"):
             q = request.form['qua']
+            det = session['det']
             det.append([rrm[0]]*int(q))
+            session['det'] = det
             return redirect("/buynow")
     else:
         return render_template("res.html",r=r,tm=tm)
@@ -621,10 +625,10 @@ def abt():
 
 @app.route('/buynow',methods=['POST','GET'])
 def cart():
-    le=len(det)
+    le=len(session['det'])
     l=[]
     tt=0
-    for i in det:
+    for i in session['det']:
         for j in i:
             l.append(j)
     l1={v['ISBN']:v for v in l}.values()
@@ -640,7 +644,7 @@ def cart():
             session['order']=de
             return redirect("/order")
         if request.form.get("uc"):
-            det.clear()
+            session['det']=[]
             return redirect("/buynow")
         if request.form.get("se"):
                 d = request.form['ser']
@@ -738,7 +742,7 @@ def orde():
                  server.login("brilliantbooks0@gmail.com", password)
                  server.send_message(msg)
                  server.quit()
-                 det.clear()
+                 session['det']=[]
             
 
                  flash("Successfully Placed Order")
