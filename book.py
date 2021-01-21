@@ -852,8 +852,8 @@ def trac():
                 cur=mysql.connection.cursor()
                 cur.execute("select * from stock")
                 mysql.connection.commit()
-                r=cur.fetchall()
-                for i in r:
+                ru=cur.fetchall()
+                for i in ru:
                     l1 = ' '.join([str(elem) for elem in [i[key] for key in ['ISBN','Name','AName','Publication','Genre','About']]])
                     o=l1.replace(" ", "")
                     o=o.lower()
