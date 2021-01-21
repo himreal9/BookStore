@@ -1,0 +1,66 @@
+{% extends "temp1.html" %}
+{% block body %}
+{% with messages=get_flashed_messages() %}
+        {% if messages %}
+        {{messages[0]}}
+        {% endif %}
+        {% endwith %}
+        <div class="container">
+<form action="" method="POST">
+        ISBN:
+        <br>
+        <input name="bno" required/>
+        <br>
+        Book Name:
+        <br>
+        <input name="bn" required/>
+        <br>
+        Author Name:
+        <br>
+        <input name="an" required/>
+        <br>
+        Edition:
+        <br>
+        <input name="edi" required/>
+        <br>
+        Publication:
+        <br>
+        <input name="pub" required/>
+        <br>
+        Price:
+        <br>
+        <input type="number" value="1" name="pri" required>
+        <br>
+        Genre:
+        <br>
+        <select name="gen" required>
+        <option value="Gen">General</option>
+        <option value="Stu">Studies</option>
+        <option value="Novel">Novel</option>
+        <option value="Comic">Comic</option>
+        </select>
+        <br>
+        Quantity:
+        <br>
+        <input type="number" value="1" name="qu" required>
+        <br>
+        Image URL:
+        <br>
+        <input name="url" required/>
+        <br>
+        About Book:
+        <br>
+        <textarea rows="20" cols="30" type="text" name="abu" required></textarea>
+        <br>
+        Recomended?
+        <br>
+        <select name="rec" required>
+        <option value="No">No</option>
+        <option value="Yes">Yes</option>
+        </select>
+        <br>
+        <input type="submit" name="ad" value="ADD"/>
+        <input type="submit" name="bk" value="Back" formnovalidate/>
+</form>
+</div
+{% endblock %}

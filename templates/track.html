@@ -1,0 +1,36 @@
+{% extends "temp.html" %}
+{% block body %}
+<form action="" method="POST">
+        <br>
+        <table>
+        <tr>
+        {% for i in h %}
+        <th>
+        {{i}}
+        </th>
+        {% endfor %}
+        </tr>
+        {% for i in l1 %}
+        <tr>
+        {% for j in i %}
+        <td>
+        {{j}}
+        {% endfor %}
+        </td>
+        </tr>
+        {% endfor %}
+        </table>
+        <p>
+        {% with messages=get_flashed_messages() %}
+        {% if messages %}
+        {{messages[0]}}
+        {% endif %}
+        {% endwith %}
+        <p>
+        Order ID:
+        <br>
+        <input type="text" name="st" required/>
+        <input class="btnSubmit" type="submit" name="dl" value="Cancle"/>
+        <input class="btnSubmit" type="submit" name="bkk" value="Back" formnovalidate/> 
+</form>
+{% endblock %}

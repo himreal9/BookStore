@@ -1,0 +1,35 @@
+{% extends "temp.html" %}
+{% block body %}
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="about-section paddingTB60 gray-bg">
+                <div class="container">
+                    <div class="row">
+						<div class="col-md-7 col-sm-6">
+							<div class="about-title clearfix">
+								<h1>About <span>Us</span></h1>
+								<h3>Brilliant Books</h3>
+								<p class="about-paddingB">“I declare after all there is no enjoyment like reading!”- Jane Austen, Pride and Prejudice. </p>
+								<p>We offer huge collection of books in diverse category of Fiction, Non-fiction, Biographies, History, Religions, Self -Help, Children. We also sell in vast collection of Investments and Management, Computers, Engineering, Medical, College and School text references books proposed by different institutes as syllabus across the country. Besides to this, we also offer a large collection of E-Books at very fair pricing.</p>
+						<div class="about-icons"> 
+                            <ul >
+                                <li><a class="nav-link active" href="https://www.instagram.com/__h.a.d.e.s._/"><p><i class="fa fa-instagram"></i>  Instagram</p></a></li>
+                                <li><a class="nav-link active" href="https://www.linkedin.com/in/himanshu-patel-758019159"><p><i class="fa fa-linkedin-square"></i>linkedIn</p></a></li>
+                                <li><a class="nav-link active" href="https://github.com/himreal9"><p><i class="fa fa-github"></i>  GitHub</p></a></li>
+                            </ul>       
+               
+               
+	           
+	           
+	        
+	        </div>
+							</div>
+						</div>
+						<div class="col-md-5 col-sm-6">
+							<div class="about-img">
+								<img src={{url_for('static',filename='logo.png')}} alt="">
+							</div>
+						</div>	
+                    </div>
+                </div>
+            </div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "temp.html" %}
+{% block body %}
+
+{% if session['p']!=0 %}
+<br>
+<br>
+<p>
+&nbsp&nbsp&nbsp&nbsp{% with messages=get_flashed_messages() %}
+        {% if messages %}
+        {{messages[-1]}}
+        {% endif %}
+        {% endwith %}
+</p>
+<div class="small-container">
+<div class="row">
+{% for i in session['s'] %}
+<div class="col-4">
+<a href="/{{i['ISBN']}}" class="nav-link active"><img src={{i['Image_url']}} alt={{i['Name']}}><h4>{{i['Name']}}</h4><p>₹ {{i['Price']}}</a></p>
+</div>
+{% endfor %}
+</div>
+</div>
+
+{% elif session['p']==0 %}
+<div class="im0">
+<img src={{url_for('static',filename='fff.gif')}}>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,54 @@
+
+{% extends "temp.html" %}
+{% block body %}
+
+<div class="container pt3 my-3 border">
+<div class="row">
+<div class="col-sm-4">
+<div class="d-inline-flex p-2">
+<img src={{r[0]['Image_url']}} alt={{r[0]['Name']}} width="400" height="500">
+</div>
+</div>
+<div class="col-sm-8">
+<h1>{{r[0]['Name']}} By {{r[0]['AName']}}</h1>
+<h4>₹{{r[0]['Price']}}</h4>
+<form action="" method="POST">
+<div class="quu">
+<input type="number" value="1" name="qua" min="1" max="{{r[0]['Quantity']}}" oninvalid="setCustomValidity('Available up to {{r[0]['Quantity']}}')" oninput="setCustomValidity('')"/>
+</div>
+
+{% if r[0]['Quantity']!='0' %}
+<div class="btn99">
+<br>
+<input type="submit" name="cart" value="Add to cart" class="btn btn-danger"/>&nbsp&nbsp
+<input type="submit" name="buy" value="Buy Now" class="btn btn-danger"/>
+</div>
+{% else %}
+<hr>
+<div class="alert alert-danger" role="alert">
+This Book is out of stock
+</div>
+{% endif %}
+</form>
+<br>
+<h3>Product Detailes&nbsp&nbsp<i class="fa fa-info-circle"></i></h3>
+<hr>
+<p>{{r[0]['Name']}} By {{r[0]['AName']}}</p>
+<p>{{r[0]['About']}}</p>
+</div>
+</div>
+</div>
+<hr>
+<div class="fb">
+<h1>Recomonded:</h1></div>
+<div class="small-container">
+<div class="row">
+{% for i in tm[0:3] %}
+<div class="col-4">
+<a href="/{{i['ISBN']}}" class="nav-link active"><img src={{i['Image_url']}} alt={{i['Name']}} ><h4>{{i['Name']}}</h4><p>₹ {{i['Price']}}</a></p>
+</div>
+{% endfor %}
+</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends "temp1.html" %}
+{% block body %}
+
+
+
+
+
+<div class="container">
+   <form action="" method="POST">
+            <div class="form">
+                <div class="note">
+                
+                    <p>Create</p>
+                </div>
+
+  <div class="form-content">
+
+	<div class="input-group">
+		<div class="input-group-prepend">
+		    <span class="input-group-text"><i class="fa fa-envelope"></i> </span>
+		 </div>
+		<input class="form-control" name="emal"  placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" oninvalid="setCustomValidity('Enter a valid email ID')" oninput="setCustomValidity('')" required/>
+	</div>
+<br>
+
+
+
+	<div class="input-group">
+		<div class="input-group-prepend">
+		    <span class="input-group-text"><i class="fa fa-users"></i> </span>
+		 </div>
+		<input class="form-control" name="fnam" placeholder="First Name" pattern="[A-Za-z]+" oninvalid="setCustomValidity('Name should contain only letters')" oninput="setCustomValidity('')" required/>
+	</div>
+<br>
+
+
+	<div class="input-group">
+		<div class="input-group-prepend">
+		    <span class="input-group-text"><i class="fa fa-user-plus"></i> </span>
+		 </div>
+		<input class="form-control" name="lnam" placeholder="Last Name" pattern="[A-Za-z]+" oninvalid="setCustomValidity('Name should contain only letters')" oninput="setCustomValidity('')" required/>
+	</div>
+<br>
+
+
+	<div class="input-group">
+		<div class="input-group-prepend">
+		    <span class="input-group-text"><i class="fa fa-mobile 2x"></i> </span>
+		 </div>
+		<input class="form-control" name="no" placeholder="Mobile Number" pattern="[6-9]{1}[0-9]{9}" oninvalid="setCustomValidity('Enter a valid mobile number')" oninput="setCustomValidity('')" required/>
+	</div>
+
+<br>
+
+    <div class="input-group">
+		<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-key"></i> </span>
+		 </div>
+	    <input class="form-control" name="pas" type="password" placeholder="Password" pattern=".{8,}" oninvalid="setCustomValidity('Password should contain minimun 8 characters')" oninput="setCustomValidity('')" required/>
+	</div>
+	
+	<br>
+
+
+	<div class="input-group">
+		<div class="input-group-prepend">
+		    <span class="input-group-text"><i class="fa fa-lock"></i> </span>
+		 </div>
+		<input type="password" class="form-control" name="cpas" placeholder="Confirm Password" required/>
+	</div>
+	{% with messages=get_flashed_messages() %}
+                {% if messages %}
+                <br>
+                <div class="alert alert-danger" role="alert">
+                    *{{messages[0]}}
+                </div>
+                {% endif %}
+                {% endwith %}
+                
+
+                            
+                            <div class="form-group text-center">
+                                <input type="submit" value="Create" name="su" class="btnSubmit"/>
+
+
+                            </div>
+
+                        </div>
+                     </form>   
+                        </div>
+                    </div>
+
+                </div>
+{% endblock %}

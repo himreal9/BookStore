@@ -1,0 +1,34 @@
+{% extends "temp1.html" %}
+{% block body %}
+<form action="" method="POST">
+        <br>
+        <table>
+        <tr>
+        {% for i in h %}
+        <th>
+        {{i}}
+        </th>
+        {% endfor %}
+        </tr>
+        {% for i in l1 %}
+        <tr>
+        {% for j in i %}
+        <td>
+        {{j}}
+        {% endfor %}
+        </td>
+        </tr>
+        {% endfor %}
+        </table>
+        <p>
+        {% with messages=get_flashed_messages() %}
+        {% if messages %}
+        {{messages[0]}}
+        {% endif %}
+        {% endwith %}
+        <p>
+
+        <input class="btnSubmit" type="submit" name="dl" value="Delete All"/>
+        <input class="btnSubmit" type="submit" name="bkk" value="Back" formnovalidate/> 
+</form>
+{% endblock %}

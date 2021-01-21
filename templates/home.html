@@ -1,0 +1,35 @@
+{% extends "temp.html" %}
+{% block body %}
+<div class="banner">
+<div class="banner-img">
+<img src="https://wildlifekart.com/wp-content/uploads/2020/11/Books.jpg">
+</div>
+</div>
+<section class="rit">
+<div class="container">
+<div class="fb">
+<div class="ts text-center">
+<h1>Brilliant Books</h1>
+</div>
+<p class="text-center">A book is a medium for recording information in the form of writing or images,<br> typically composed of many pages bound together and protected by a cover. <br>The technical term for this physical arrangement is codex. <br> --Wikipedia</p>
+</div>
+</div>
+</section>
+
+<div class="fb">
+<div class="ts text-center">
+<h1>Brilliant's Choice:</h1></div>
+</div>
+
+
+<div class="small-container">
+<div class="row">
+{% for i in rm[0:3] %}
+<div class="col-4">
+<a href="/{{i['ISBN']}}" class="nav-link active"><img src={{i['Image_url']}} alt={{i['Name']}} ><h4>{{i['Name']}}</h4><p>₹ {{i['Price']}}</a></p>
+</div>
+{% endfor %}
+</div>
+</div>
+
+{% endblock %}

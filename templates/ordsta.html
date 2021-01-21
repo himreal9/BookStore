@@ -1,0 +1,43 @@
+{% extends "temp1.html" %}
+{% block body %}
+<form action="" method="POST">
+        <br>
+        <table>
+        <tr>
+        {% for i in h %}
+        <th>
+        {{i}}
+        </th>
+        {% endfor %}
+        </tr>
+        {% for i in l1 %}
+        <tr>
+        {% for j in i %}
+        <td>
+        {{j}}
+        {% endfor %}
+        </td>
+        </tr>
+        {% endfor %}
+        </table>
+        <p>
+        {% with messages=get_flashed_messages() %}
+        {% if messages %}
+        {{messages[0]}}
+        {% endif %}
+        {% endwith %}
+        <p>
+         Order ID to be edited:
+        <p>
+        <input type="text" name="st" required/>
+        <select name="sta">
+        <option value="Packed">Packed</option>
+        <option value="Out for Delivery">Out for Delivery</option>
+        <option value="Delivered">Delivered</option>
+        <option value="Cancled by store">Cancle</option>
+        </select>
+        <p>
+        <input class="btnSubmit" type="submit" name="dl" value="Edit"/>
+        <input class="btnSubmit" type="submit" name="bkk" value="Back" formnovalidate/> 
+</form>
+{% endblock %}

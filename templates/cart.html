@@ -1,0 +1,104 @@
+
+{% extends "temp.html" %}
+{% block body %}
+
+
+
+{% if le!=0 %}
+<div class="cart-wrap">
+		<div class="container pt9 my-3">
+	 <form action="" method="POST">
+	        <div class="row">
+			    <div class="col-lg-8">
+			        <div class="main-heading">Shopping Cart</div>
+			        <div class="table-cart">
+	                    <table>
+	                        <thead>
+	                            <tr>
+	                                <th>Product</th>
+	                                <th>Quantity</th>
+	                                <th>Total</th>
+	                                <th></th>
+	                            </tr>
+	                        </thead>
+	                        <tbody>
+
+	                        
+	                        
+	                        {% for i in de %}
+	                            <tr>
+	                                <td>
+	                                <a style="text-decoration:none" href="/{{i[0]['ISBN']}}">
+	                                	<div class="display-flex align-center">
+		                                    <div class="img-product">
+		                                        <img src={{i[0]['Image_url']}}>
+		                                    </div>
+		                                    <div class="name-product">
+		                                        {{i[0]['Name']}}
+		                                        <br>-By {{i[0]['AName']}}
+		                                    </div>
+		                                    <div class="price">
+		                                        {% set c = i[0]['Price'] | int() %}
+		                                        ₹{{c}}
+		                                    </div>
+	                                    </div>
+	                                    </a>
+	                                </td>
+	                                <td class="product-count">
+	                                    <div class="count-inlineflex">
+										    <lable name="qua" class="qty">{{i[1]}}</lable>
+                                        <div>
+	                                </td>
+	                                <td>
+	                                    <div class="total">
+	                                    {% set q = i[1] | int() %}
+	                                        ₹{{c*q}}
+	                                    </div>
+	                                </td>
+	                            </tr>
+	                            {% endfor %}
+	                           
+	                           
+	                           
+	                           
+	                        </tbody>
+	                    </table>
+			        </div>
+			    </div>
+			    <div class="col-lg-4">
+			        <div class="cart-totals">
+			            <h3>Cart Totals</h3>
+			                <table>
+			                    <tbody>
+			                        <tr>
+			                            <td>Subtotal</td>
+			                            <td class="subtotal">₹{{tt}}</td>
+			                        </tr>
+			                        <tr>
+			                            <td>Shipping</td>
+			                            <td class="free-shipping">Free Shipping</td>
+			                        </tr>
+			                        <tr class="total-row">
+			                            <td>Total</td>
+			                            <td class="price-total">₹{{tt}}</td>
+			                        </tr>
+			                    </tbody>
+			                </table>
+			                <div class="btn-cart-totals">
+			                    <input type="submit" class="update round-black-btn text-center" value="Clear Cart" name="uc"/>                
+			                    <input type="submit" class="checkout round-black-btn text-center" value="Proceed to Checkout" name="bn"/>
+			                </div>
+			        </div>
+			    </div>
+			</div>
+	</form>
+		</div>
+	</div>
+	
+	
+	
+{% else %}
+
+<img class="center" src={{url_for('static',filename='empty.png')}}>
+{% endif %}
+{% endblock %}

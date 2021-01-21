@@ -1,0 +1,51 @@
+{% extends "temp1.html" %}
+{% block body %}
+<form action="" method="POST">
+        <br>
+        <table>
+        <tr>
+        {% for i in h %}
+        <th>
+        {{i}}
+        </th>
+        {% endfor %}
+        </tr>
+        {% for i in l1 %}
+        <tr>
+        {% for j in i %}
+        <td>
+        {{j}}
+        {% endfor %}
+        </td>
+        </tr>
+        {% endfor %}
+        </table>
+        <p>
+        {% with messages=get_flashed_messages() %}
+        {% if messages %}
+        {{messages[0]}}
+        {% endif %}
+        {% endwith %}
+        <p>
+         Stock to be edited:
+        <p>
+        <input type="text" name="unam" required/>
+        <select name="fil">
+        <option value="ISBN">ISBN</option>
+        <option value="Name">Name</option>
+        <option value="AName">Author Name</option>
+        <option value="Edition">Edition</option>
+        <option value="Publication">Publication</option>
+        <option value="Price">Price</option>
+        <option value="Genre">Genre</option>
+        <option value="Quantity">Quantity</option>
+        <option value="Image_URL">Image_URL</option>
+        <option value="About">About</option>
+        <option value="Rec">Recomended</option>
+        </select>
+        <input type="text" name="val" required/>
+        <p>
+        <input type="submit" name="dl" value="Edit"/>
+        <input type="submit" name="bkk" value="Back" formnovalidate/> 
+</form>
+{% endblock %}

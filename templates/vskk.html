@@ -1,0 +1,23 @@
+{% extends "temp1.html" %}
+
+{% block body %}
+        <table>
+        <tr>
+        {% for i in h %}
+        <th>
+        {{i}}
+        </th>
+        {% endfor %}
+        </tr>
+        {% for i in l1 %}
+        <tr>
+        {% for j in i %}
+        <td>
+        {{j}}
+        {% endfor %}
+        </td>
+        </tr>
+        {% endfor %}
+        </table>
+        <a href="/ahom" class="btn btn-outline-danger text-center">Go Back</a>
+{% endblock %}

@@ -1,0 +1,123 @@
+{% extends "temp1.html" %}
+
+{% block body %}
+
+<section class="services py-5 bg-light text-center">
+    <div class="container">
+       <div class="row">
+       {% if session['k']==1 %}
+           <div class="col-xs-12 col-sm-6 col-md-3">
+               <a href="/addsub" class="text-body">
+    		    <div class="card bg-light mb-3">
+    		        <div class="card-body">
+    		           <i class="fa fa-user-plus fa-4x "></i></br>
+                    	<h5>Add Sub-admin</h5>
+    		        </div>
+    		    </div>
+    		   </a>
+    		</div>
+    	   <div class="col-xs-12 col-sm-6 col-md-3">
+               <a href="/adel" class="text-body">
+    		    <div class="card bg-light mb-3">
+    		        <div class="card-body">
+    		           <i class="fa fa-user-times fa-4x "></i></br>
+                    	<h5>Remove Sub-admin</h5>
+    		        </div>
+    		    </div>
+    		   </a>
+    		</div>
+    		{% else %}
+    		<div class="col-xs-12 col-sm-6 col-md-3">
+               <a href="/vsk" class="text-body">
+    		    <div class="card bg-light mb-3">
+    		        <div class="card-body">
+    		           <i class="fa fa-eye fa-4x "></i></br>
+                    	<h5>View Stock</h5>
+    		        </div>
+    		    </div>
+    		   </a>
+    		</div>
+    	   <div class="col-xs-12 col-sm-6 col-md-3">
+               <a href="https://www.google.com/maps" class="text-body">
+    		    <div class="card bg-light mb-3">
+    		        <div class="card-body">
+    		           <i class="fa fa-map fa-4x "></i></br>
+                    	<h5>View Map</h5>
+    		        </div>
+    		    </div>
+    		   </a>
+    		</div>
+ {% endif %}
+    	   <div class="col-xs-12 col-sm-6 col-md-3">
+               <a href="/as" class="text-body">
+    		    <div class="card bg-light mb-3">
+    		        <div class="card-body">
+    		           <i class="fa fa-server fa-4x"></i></br>
+                    	<h5>Add Stock</h5>
+    		        </div>
+    		    </div>
+    		   </a>
+    		</div>
+    	   <div class="col-xs-12 col-sm-6 col-md-3">
+               <a href="/rs" class="text-body">
+    		    <div class="card bg-light mb-3">
+    		        <div class="card-body">
+    		           <i class="fa fa-stack-overflow fa-4x "></i></br>
+                    	<h5>Remove Stock</h5>
+    		        </div>
+    		    </div>
+    		   </a>
+    		</div>
+    	   
+       </div>
+       <div class="row pt-4">
+           <div class="col-xs-12 col-sm-6 col-md-3">
+               <a href="/es" class="text-body">
+    		    <div class="card bg-light mb-3">
+    		        <div class="card-body">
+    		           <i class="fa fa-pencil-square-o fa-4x "></i></br>
+                    	<h5>Edit Stock</h5>
+    		        </div>
+    		    </div>
+    		   </a>
+    		</div>
+    	   <div class="col-xs-12 col-sm-6 col-md-3">
+               <a href="#" class="text-body">
+    		    <div class="card bg-light mb-3">
+    		        <div class="card-body">
+    		           <i class="fa fa-line-chart fa-4x "></i></br>
+                    	<h5>Stock analysis</h5>
+    		        </div>
+    		    </div>
+    		   </a>
+    		</div>
+    	   <div class="col-xs-12 col-sm-6 col-md-3">
+               <a href="/os" class="text-body">
+    		    <div class="card bg-light mb-3">
+    		        <div class="card-body">
+    		           <i class="fa fa-stack-exchange fa-4x "></i></br>
+                    	<h5>Order Status</h5>
+    		        </div>
+    		    </div>
+    		   </a>
+    		</div>
+    	   <div class="col-xs-12 col-sm-6 col-md-3">
+               <a href="/oh" class="text-body">
+    		    <div class="card bg-light mb-3">
+    		        <div class="card-body">
+    		           <i class="fa fa-hourglass-start fa-4x "></i></br>
+                    	<h5>Order history</h5>
+    		        </div>
+    		    </div>
+    		   </a>
+    		</div>
+    		
+    	   
+       
+    	   
+    	   
+       </div>
+    </div>
+</section>
+
+{% endblock %}

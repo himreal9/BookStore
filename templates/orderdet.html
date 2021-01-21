@@ -1,0 +1,76 @@
+{% extends "temp.html" %}
+{% block body %}
+  {% with messages=get_flashed_messages() %}
+                        {% if messages %}
+                        <div class="container pt3 my-3">
+                        <br>
+                        <div class="alert alert-success" role="alert">
+                        {{messages[0]}}
+                        </div>
+                        <img class="center" src={{url_for('static',filename='placed.png')}}>
+                        </div>
+  {% else %}                      
+<div class="container contact-form">
+
+         
+            <form action="" method="POST">
+                <h3>Order Detailes</h3>
+               <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <p style="color:grey;font-size:15px">First Name:</p>
+                            <input type="text" name="fnam" class="form-control" placeholder="First Name *" required/>
+                            <br>
+                        </div>
+                        <div class="form-group">
+                        <p style="color:grey;font-size:15px">Last Name:</p>
+                            <input type="text" name="lnam" class="form-control" placeholder="Last Name *"  required/>
+                            <br>
+                        </div>
+                        
+                        <div class="form-group">
+                            <p style="color:grey;font-size:15px">Email:</p>
+                            <input type="text" name="emal" class="form-control" placeholder="Your Email *" required/>
+                            <br>
+                        </div>
+                        <div class="form-group"><p style="color:grey;font-size:15px">Phone Number:</p>
+                            <input type="text" name="pon" class="form-control" placeholder="Your Phone Number *" required/>
+                            <br>
+                        </div>
+                        
+                        
+                    
+                    </div>
+                    <div class="col-md-6">
+                    <div class="form-group">
+                        <p style="color:grey;font-size:15px">ZIP Code:</p>
+                            <input type="text" name="zip" class="form-control" placeholder="ZIP CODE *"required/>
+                            <br>
+                        </div>
+                        
+                        <div class="form-group">
+                        <p style="color:grey;font-size:15px">Landmark:</p>
+                            <input type="text" name="lan" class="form-control" placeholder="Landmark *" required/>
+                            <br>
+                        </div>
+                    
+                        <div class="form-group">
+                        <p style="color:grey;font-size:15px">Address:</p>
+                            <textarea name="add" class="form-control" placeholder="Address *" style="width: 100%; height: 141px;"required></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="alert alert-success" role="alert">
+                Payment method : <i class="fa fa-money"></i> Cash on delivery.
+                </div>
+                <input type="submit" name="po" class="btnContact" value="Place Order"/>
+                            
+            </form>
+</div>
+
+ 
+{% endif %}
+                        {% endwith %}
+
+
+{% endblock %}

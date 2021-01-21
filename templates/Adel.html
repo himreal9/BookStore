@@ -1,0 +1,36 @@
+{% extends "temp1.html" %}
+{% block body %}
+<form action="" method="POST">
+        <table>
+        <tr>
+        {% for i in h %}
+        <th>
+        {{i}}
+        </th>
+        {% endfor %}
+        </tr>
+        {% for i in l1 %}
+        <tr>
+        {% for j in i %}
+        <td>
+        {{j}}
+        {% endfor %}
+        </td>
+        </tr>
+        {% endfor %}
+        </table>
+        <p>
+         EmailID to be deleted:
+        <p>
+        {% with messages=get_flashed_messages() %}
+        {% if messages %}
+        {{messages[0]}}
+        {% endif %}
+        {% endwith %}
+        <p>
+        <input type="text" name="unam" required/>
+        <p>
+        <input type="submit" name="dl" value="Delete"/>
+        <input type="submit" name="bkk" value="Back" formnovalidate/> 
+</form>
+{% endblock %}
