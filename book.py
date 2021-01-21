@@ -16,6 +16,7 @@ det=[]
 @app.route('/con',methods=['POST','GET']) 
 def con():
     if request.method=='POST':
+        l=[]
         if request.form.get("se"):
                 d = request.form['ser']
                 d=d.lower()
@@ -803,22 +804,23 @@ def esh():
 def track():
     if request.method=='POST':
         if request.form.get("se"):
-                sd = request.form['ser']
-                cur=mysql.connection.cursor()
-                cur.execute("select * from stock")
-                mysql.connection.commit()
-                rj=cur.fetchall()
-                for i in rj:
-                    l1 = ' '.join([str(elem) for elem in [i[key] for key in ['ISBN','Name','AName','Publication','Genre','About']]])
-                    o=l1.replace(" ", "")
-                    o=o.lower()
-                    for j in sd.split():
-                        j=j.lower()
-                        if j in o:
-                            l.append(i)
-                session['s']=l
-                session['p']=len(session['s'])
-                return redirect("/s")
+            l=[]
+            sd = request.form['ser']
+            cur=mysql.connection.cursor()
+            cur.execute("select * from stock")
+            mysql.connection.commit()
+            rj=cur.fetchall()
+            for i in rj:
+                l1 = ' '.join([str(elem) for elem in [i[key] for key in ['ISBN','Name','AName','Publication','Genre','About']]])
+            o=l1.replace(" ", "")
+            o=o.lower()
+            for j in sd.split():
+                j=j.lower()
+            if j in o:
+                l.append(i)
+            session['s']=l
+            session['p']=len(session['s'])
+            return redirect("/s")
         if request.form.get("ln"):
             d = request.form['id']
             cur=mysql.connection.cursor()
@@ -847,21 +849,23 @@ def trac():
         l=[i['orid'], i['name'], i['isbn'], i['bnam'], i['qua'], i['total'], i['mno'], i['emal'], i['adres'],i['sta']]
         l1.append(l)
     if request.method=='POST':
+        lp=[]
         if request.form.get("se"):
-                ds = request.form['ser']
+                pk = request.form['ser']
+                pk=pk.lower()
                 cur=mysql.connection.cursor()
                 cur.execute("select * from stock")
                 mysql.connection.commit()
-                ru=cur.fetchall()
-                for i in ru:
-                    l12 = ' '.join([str(elem) for elem in [i[key] for key in ['ISBN','Name','AName','Publication','Genre','About']]])
-                    o=l12.replace(" ", "")
+                rk=cur.fetchall()
+                for i in r:
+                    l1p = ' '.join([str(elem) for elem in [i[key] for key in ['ISBN','Name','AName','Publication','Genre','About']]])
+                    o=l1p.replace(" ", "")
                     o=o.lower()
-                    for j in ds.split():
+                    for j in pk.split():
                         j=j.lower()
                         if j in o:
-                            l11.append(i)
-                session['s']=l11
+                            lp.append(i)
+                session['s']=lp
                 session['p']=len(session['s'])
                 return redirect("/s")
         if request.form.get("dl"):
