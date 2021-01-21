@@ -546,6 +546,8 @@ def ress():
             r=cur.fetchall()
             l={'0','1','2','3','4','5','6','7','8','9'}
             ko=''
+            for i in random.sample(l, 4):
+                ko=ko+i
             session['ko']=ko
             if len(r)>0:
                 toaddr  =us
