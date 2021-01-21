@@ -37,7 +37,7 @@ def con():
                 return redirect("/s")
         if request.form.get("sub"):
             toaddr  = request.form['txtEmail']
-            passwor = "bbb54321"
+            passwor = "bbb@54321"
             msg = EmailMessage()
             msgt='Thank you for connecting with us.\nBrilliants Books'
             msg.set_content(msgt)
@@ -50,7 +50,7 @@ def con():
             server.send_message(msg)
             server.quit()
             toaddrs  = "brilliantbooks0@gmail.com"
-            password = "bbb54321"
+            password = "bbb@54321"
             msg = EmailMessage()
             msgtxt='From '+request.form['txtName']+'\n'+request.form['txtMsg']+'\n'+'Contact: '+request.form['txtPhone']+'\n'+request.form['txtEmail']
             msg.set_content(msgtxt)
@@ -550,7 +550,7 @@ def ress():
                 ko=ko+i
             if len(r)>0:
                 toaddr  =us
-                passwor = "bbb54321"
+                passwor = "bbb@54321"
                 msg = EmailMessage()
                 msgt='Your OTP for password reset request is ' +ko+'.\n        -Brilliants Books'
                 msg.set_content(msgt)
@@ -712,7 +712,7 @@ def orde():
                  for i in rm:
                      s=s+str(i['orid'])+","
                  toaddr  = ed
-                 passwor = "bbb54321"
+                 passwor = "bbb@54321"
                  msg = EmailMessage()
                  msgt='Your open Order IDs='+s+'\n'+str(l)+'\n'+"Total Amount: ₹"+str(ttt)+' \n Thank you for chosing us.\nBrilliants Books'
                  msg.set_content(msgt)
@@ -725,7 +725,7 @@ def orde():
                  server.send_message(msg)
                  server.quit()
                  toaddrs  = "brilliantbooks0@gmail.com"
-                 password = "bbb54321"
+                 password = "bbb@54321"
                  msg = EmailMessage()
                  msgtxt=str(l)+'\n'+"Total Amount: ₹"+str(ttt)+'\n'+'Order IDs='+s+'\n'+'From '+nam+'\n'+add+'\n'+'Contact: '+pd+'\n'+ed
                  msg.set_content(msgtxt)
