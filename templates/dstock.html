@@ -1,23 +1,28 @@
 {% extends "temp1.html" %}
 {% block body %}
 <form action="" method="POST">
-        <table>
+        <br>
+        <table class="table table-hover">
+        <thead>
         <tr>
         {% for i in h %}
-        <th>
+        <th scope="col">
         {{i}}
-        </th>
-        {% endfor %}
+        </th>       
+        {% endfor %}       
         </tr>
+        </thead>
+        <tbody>
         {% for i in l1 %}
-        <tr>
+        <tr>       
         {% for j in i %}
         <td>
         {{j}}
-        {% endfor %}
         </td>
+        {% endfor %}
         </tr>
         {% endfor %}
+         </tbody>
         </table>
         <p>
         {% with messages=get_flashed_messages() %}
