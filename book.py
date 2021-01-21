@@ -803,8 +803,7 @@ def esh():
 def track():
     if request.method=='POST':
         if request.form.get("se"):
-                d = request.form['ser']
-                d=d.lower()
+                sd = request.form['ser']
                 cur=mysql.connection.cursor()
                 cur.execute("select * from stock")
                 mysql.connection.commit()
@@ -813,7 +812,7 @@ def track():
                     l1 = ' '.join([str(elem) for elem in [i[key] for key in ['ISBN','Name','AName','Publication','Genre','About']]])
                     o=l1.replace(" ", "")
                     o=o.lower()
-                    for j in d.split():
+                    for j in sd.split():
                         j=j.lower()
                         if j in o:
                             l.append(i)
@@ -849,8 +848,7 @@ def trac():
         l1.append(l)
     if request.method=='POST':
         if request.form.get("se"):
-                d = request.form['ser']
-                d=d.lower()
+                ds = request.form['ser']
                 cur=mysql.connection.cursor()
                 cur.execute("select * from stock")
                 mysql.connection.commit()
@@ -859,7 +857,7 @@ def trac():
                     l1 = ' '.join([str(elem) for elem in [i[key] for key in ['ISBN','Name','AName','Publication','Genre','About']]])
                     o=l1.replace(" ", "")
                     o=o.lower()
-                    for j in d.split():
+                    for j in ds.split():
                         j=j.lower()
                         if j in o:
                             l.append(i)
