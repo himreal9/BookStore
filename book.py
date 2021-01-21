@@ -844,28 +844,27 @@ def trac():
     mysql.connection.commit()
     r=cur.fetchall()
     h=["Order ID","Name", "ISBN","Book","Quantity",'Total','Mobile Number','Email','address', 'status']
-    l1=[]
+    l2=[]
     for i in r:
-        l=[i['orid'], i['name'], i['isbn'], i['bnam'], i['qua'], i['total'], i['mno'], i['emal'], i['adres'],i['sta']]
-        l1.append(l)
+        l3=[i['orid'], i['name'], i['isbn'], i['bnam'], i['qua'], i['total'], i['mno'], i['emal'], i['adres'],i['sta']]
+        l1.append(l3)
     if request.method=='POST':
-        lp=[]
+        l=[]
         if request.form.get("se"):
-                pk = request.form['ser']
-                pk=pk.lower()
+                ds = request.form['ser']
                 cur=mysql.connection.cursor()
                 cur.execute("select * from stock")
                 mysql.connection.commit()
-                rk=cur.fetchall()
-                for i in r:
-                    l1p = ' '.join([str(elem) for elem in [i[key] for key in ['ISBN','Name','AName','Publication','Genre','About']]])
-                    o=l1p.replace(" ", "")
+                rs=cur.fetchall()
+                for i in rs:
+                    l2 = ' '.join([str(elem) for elem in [i[key] for key in ['ISBN','Name','AName','Publication','Genre','About']]])
+                    o=l2.replace(" ", "")
                     o=o.lower()
-                    for j in pk.split():
+                    for j in ds.split():
                         j=j.lower()
                         if j in o:
-                            lp.append(i)
-                session['s']=lp
+                            l.append(i)
+                session['s']=l
                 session['p']=len(session['s'])
                 return redirect("/s")
         if request.form.get("dl"):
