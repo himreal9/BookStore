@@ -802,6 +802,24 @@ def esh():
 @app.route('/tk',methods=['POST','GET'])
 def track():
     if request.method=='POST':
+        if request.form.get("se"):
+                d = request.form['ser']
+                d=d.lower()
+                cur=mysql.connection.cursor()
+                cur.execute("select * from stock")
+                mysql.connection.commit()
+                r=cur.fetchall()
+                for i in r:
+                    l1 = ' '.join([str(elem) for elem in [i[key] for key in ['ISBN','Name','AName','Publication','Genre','About']]])
+                    o=l1.replace(" ", "")
+                    o=o.lower()
+                    for j in d.split():
+                        j=j.lower()
+                        if j in o:
+                            l.append(i)
+                session['s']=l
+                session['p']=len(session['s'])
+                return redirect("/s")
         if request.form.get("ln"):
             d = request.form['id']
             cur=mysql.connection.cursor()
@@ -830,6 +848,24 @@ def trac():
         l=[i['orid'], i['name'], i['isbn'], i['bnam'], i['qua'], i['total'], i['mno'], i['emal'], i['adres'],i['sta']]
         l1.append(l)
     if request.method=='POST':
+        if request.form.get("se"):
+                d = request.form['ser']
+                d=d.lower()
+                cur=mysql.connection.cursor()
+                cur.execute("select * from stock")
+                mysql.connection.commit()
+                r=cur.fetchall()
+                for i in r:
+                    l1 = ' '.join([str(elem) for elem in [i[key] for key in ['ISBN','Name','AName','Publication','Genre','About']]])
+                    o=l1.replace(" ", "")
+                    o=o.lower()
+                    for j in d.split():
+                        j=j.lower()
+                        if j in o:
+                            l.append(i)
+                session['s']=l
+                session['p']=len(session['s'])
+                return redirect("/s")
         if request.form.get("dl"):
             d = request.form['st']
             cur=mysql.connection.cursor()
