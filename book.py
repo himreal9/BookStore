@@ -844,7 +844,7 @@ def trac():
     mysql.connection.commit()
     r=cur.fetchall()
     h=["Order ID","Name", "ISBN","Book","Quantity",'Total','Mobile Number','Email','address', 'status']
-    l2=[]
+    l1=[]
     for i in r:
         l3=[i['orid'], i['name'], i['isbn'], i['bnam'], i['qua'], i['total'], i['mno'], i['emal'], i['adres'],i['sta']]
         l1.append(l3)
