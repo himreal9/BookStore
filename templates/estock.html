@@ -30,10 +30,10 @@
         {{messages[0]}}
         {% endif %}
         {% endwith %}
-        <p>
-         Stock to be edited:
-        <p>
+        <div class="d-flex justify-content-center">
+         ISBN of stock:&nbsp
         <input type="text" name="unam" required/>
+        &nbsp&nbspTo be edited:&nbsp
         <select name="fil">
         <option value="ISBN">ISBN</option>
         <option value="Name">Name</option>
@@ -47,9 +47,11 @@
         <option value="About">About</option>
         <option value="Rec">Recomended</option>
         </select>
-        <input type="text" name="val" required/>
-        <p>
-        <input type="submit" name="dl" value="Edit"/>
-        <input type="submit" name="bkk" value="Back" formnovalidate/> 
+        &nbsp&nbspModified Value:&nbsp
+        <input type="text" name="val" required/>&nbsp&nbsp&nbsp
+        <input class="btn btn-danger" type="submit" name="dl" value="Edit"/>&nbsp&nbsp&nbsp
+        <input class="btn btn-danger" type="submit" name="bkk" value="Back" formnovalidate/> 
+        </div>
+        <br>
 </form>
 {% endblock %}
