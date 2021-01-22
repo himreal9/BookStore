@@ -940,8 +940,11 @@ def tec():
         mysql.connection.commit()
         r=cur.fetchall()
         k=0
-        for i in r:
-            k=k+int(i['qua'])
+        try:
+            for i in r:
+                k=k+int(i['qua'])
+        except:
+            k=0
         cur=mysql.connection.cursor()
         cur.execute("Select Quantity from stock")
         mysql.connection.commit()
