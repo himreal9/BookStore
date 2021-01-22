@@ -1,4 +1,4 @@
-import smtplib, random
+import requests, smtplib, random
 from flask import Flask, render_template, request, redirect, flash, session
 from flask_mysqldb import MySQL
 from email.message import EmailMessage
@@ -767,6 +767,15 @@ def orde():
                  server.send_message(msg)
                  server.quit()
                  session['det']=[]
+                
+                 url='https://www.fast2sms.com/dev/bulk'
+                 para={'authorization':'dFjveUQ2gRbokDNMJ4CALmYfZSI3VpBOuWyPwznlHTrExG5cisLjXZOsiGHhSMgaJNu2Ve7Q6nd9obPr',
+                          'sender_id':'FSTSMS',
+                          'message':msgt,
+                          'language':'english',
+                          'route':'p',
+                          'numbers':pd}
+                 requests.get(url,params=para)
             
 
                  flash("Successfully Placed Order")
