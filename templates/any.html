@@ -1,0 +1,43 @@
+{% extends "temp1.html" %}
+{% block head %}
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+			{% for key, value in data.items() %}
+				{% if value is string %}
+					['{{ key }}', '{{ value }}'],
+				{% else %}
+					['{{ key }}', {{ value }}],
+				{% endif %}
+			{% endfor %}
+        ]);
+
+        var options = {
+  title: 'Stocks Detailes Total Stocks: {{o}}',
+  pieHole: 0.3,
+  slices: {0: {color: '#e66465'}, 1:{color: '#9198e5'}}
+};
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+        chart.draw(data, options);
+      }
+    </script>
+    {% endblock %}
+
+{% block body %}
+<div class="container pt2 my-3 border">
+<div class="total">
+		Stock Analysis
+		</div>	
+		<div class="d-flex justify-content-center">	
+		<div id="piechart_3d" style="width: 900px; height: 500px;"></div></div>
+		<div class="d-flex justify-content-center">
+		<a href="ahom"><button type="button" class="btn btn-danger">Back</button><a/>
+		</div>
+		</div>
+		
+	</div>
+  {% endblock %}
