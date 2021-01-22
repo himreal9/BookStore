@@ -773,20 +773,20 @@ def es():
                 flash(f"Successfully edited {us}")
                 cur.execute("update dor set sta=%s where orid like %s",(val,us))
                 mysql.connection.commit()
+                if val=="Delivered":
+                    cur.execute("select * from dor where sta like 'Delivered'")
+                    mysql.connection.commit()
+                    ro=cur.fetchall()
+                    cur.execute("select * from stock where sta like %s",(ro[0]["isbn"],))
+                    mysql.connection.commit()
+                    rs=cur.fetchall()
+                    v=int(rs[0]["Quantity"])-int(ro[0]["qua"])
+                    cur.execute("update stock set Quantity=%s where ISBN like %s",(v,rs[0]["ISBN"]))
+                    mysql.connection.commit()
                 return redirect('/os')
             elif len(r)==0:
                 flash(f"No record found for order no. : {us}")
                 return redirect('/os')
-            if val=="Delivered":
-                cur.execute("select * from dor where sta like 'Delivered'")
-                mysql.connection.commit()
-                ro=cur.fetchall()
-                cur.execute("select * from stock where sta like %s",(ro[0]["isbn"],))
-                mysql.connection.commit()
-                rs=cur.fetchall()
-                v=int(rs[0]["Quantity"])-int(ro[0]["qua"])
-                cur.execute("update stock set Quantity=%s where ISBN like %s",(v,rs[0]["ISBN"]))
-                mysql.connection.commit()
         elif request.form.get("bkk"):
             return redirect('/ahom') 
     else:
