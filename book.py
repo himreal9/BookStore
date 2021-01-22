@@ -781,7 +781,7 @@ def es():
                     mysql.connection.commit()
                     rs=cur.fetchall()
                     v=int(rs[0]["Quantity"])-int(ro[0]["qua"])
-                    cur.execute("update stock set Quantity=%s where ISBN like %s",(v,rs[0]["ISBN"]))
+                    cur.execute("update stock set Quantity=%s where ISBN like %s",(str(v),ro[0]['isbn']))
                     mysql.connection.commit()
                 return redirect('/os')
             elif len(r)==0:
