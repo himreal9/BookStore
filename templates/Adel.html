@@ -24,18 +24,25 @@
         {% endfor %}
          </tbody>
         </table>
-        <p>
-         EmailID to be deleted:
-        <p>
+        <div class="d-flex justify-content-center">
+         EmailID to be deleted:&nbsp&nbsp
+         <input type="text" name="unam" required/>
+         </div>
+        <div class="d-flex justify-content-center">
+
         {% with messages=get_flashed_messages() %}
         {% if messages %}
+        <div class="alert alert-success" role="alert">
         {{messages[0]}}
+        </div>
         {% endif %}
         {% endwith %}
-        <p>
-        <input type="text" name="unam" required/>
-        <p>
-        <input type="submit" name="dl" value="Delete"/>
-        <input type="submit" name="bkk" value="Back" formnovalidate/> 
+        </div>
+        <br>
+        <div class="d-flex justify-content-center">
+        <input class="btn btn-danger" type="submit" name="dl" value="Delete"/>&nbsp &nbsp
+        <input class="btn btn-danger" type="submit" name="bkk" value="Back" formnovalidate/> 
+        </div>
 </form>
+<br>
 {% endblock %}
