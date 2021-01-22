@@ -774,10 +774,10 @@ def es():
                 cur.execute("update dor set sta=%s where orid like %s",(val,us))
                 mysql.connection.commit()
                 if val=="Delivered":
-                    cur.execute("select * from dor where sta like 'Delivered'")
+                    cur.execute("select * from dor where orid like %s",(us,))
                     mysql.connection.commit()
                     ro=cur.fetchall()
-                    cur.execute("select * from stock where sta like %s",(ro[0]["isbn"],))
+                    cur.execute("select * from stock where ISBN like %s",(ro[0]["isbn"],))
                     mysql.connection.commit()
                     rs=cur.fetchall()
                     v=int(rs[0]["Quantity"])-int(ro[0]["qua"])
