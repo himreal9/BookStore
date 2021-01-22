@@ -27,7 +27,9 @@
         <p>
         {% with messages=get_flashed_messages() %}
         {% if messages %}
+         <div class="alert alert-success" role="alert">       
         {{messages[0]}}
+        </div>
         {% endif %}
         {% endwith %}
         <p class="text-center">
@@ -35,7 +37,9 @@
         <input type="text" name="st" required/>
         </p>
         <br>
-        <input class="btnSubmit" type="submit" name="dl" value="Cancel"/>
-        <input class="btnSubmit" type="submit" name="bkk" value="Back" formnovalidate/> 
+        <div class="d-flex justify-content-center">
+        <input class="btn btn-danger" type="submit" name="dl" value="Cancel"/>&nbsp&nbsp
+        <input class="btn btn-danger" type="submit" name="bkk" value="Back" formnovalidate/> 
+        </div>
 </form>
 {% endblock %}
