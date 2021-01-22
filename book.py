@@ -847,7 +847,7 @@ def esh():
                 cur.execute("delete from dor where sta like 'Delivered' or sta like 'Cancled by store'")
                 flash("Successfully deleted")
                 mysql.connection.commit()
-                return redirect('/os')
+                return redirect('/oh')
             elif request.form.get("bkk"):
                 return redirect('/ahom') 
         else:
