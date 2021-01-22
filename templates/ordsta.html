@@ -30,18 +30,22 @@
         {{messages[0]}}
         {% endif %}
         {% endwith %}
-        <p>
-         Order ID to be edited:
-        <p>
-        <input type="text" name="st" required/>
+        <br>
+        <div class="d-flex justify-content-center">
+         Order ID to be edited: &nbsp
+        <input type="text" name="st" required/>&nbsp&nbspChange: &nbsp
         <select name="sta">
         <option value="Packed">Packed</option>
         <option value="Out for Delivery">Out for Delivery</option>
         <option value="Delivered">Delivered</option>
         <option value="Cancled by store">Cancle</option>
         </select>
-        <p>
-        <input class="btnSubmit" type="submit" name="dl" value="Edit"/>
-        <input class="btnSubmit" type="submit" name="bkk" value="Back" formnovalidate/> 
+        </div>
+        <br>
+        <div class="d-flex justify-content-center">
+        <input class="btn btn-danger" type="submit" name="dl" value="Edit"/> &nbsp&nbsp
+        <input class="btn btn-danger" type="submit" name="bkk" value="Back" formnovalidate/> 
+        </div>
 </form>
+<br>
 {% endblock %}
