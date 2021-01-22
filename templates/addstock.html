@@ -2,7 +2,9 @@
 {% block body %}
 {% with messages=get_flashed_messages() %}
         {% if messages %}
+        <div class="alert alert-success" role="alert">
         {{messages[0]}}
+        </div>
         {% endif %}
         {% endwith %}
 <div class="container p-3 my-3 border">
