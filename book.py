@@ -212,7 +212,7 @@ def log():
 
 @app.route('/ahom',methods=['POST','GET'])
 def ahom():
-    if session['ho'] == True:
+    if 'ho' in session:
         cur=mysql.connection.cursor()
         cur.execute("select * from user")
         mysql.connection.commit()
@@ -223,7 +223,7 @@ def ahom():
 
 @app.route('/addsub',methods=['POST','GET'])
 def sinup():
-    if session['ho'] == True:
+    if 'ho' in session:
         if request.method=='POST':
             us = request.form['emal']            
             cur=mysql.connection.cursor()
@@ -258,7 +258,7 @@ def sinup():
     
 @app.route('/adel',methods=['POST','GET'])
 def adel():
-    if session['ho'] == True:
+    if 'ho' in session:
         cur=mysql.connection.cursor()
         cur.execute("select * from user")
         mysql.connection.commit()
@@ -287,7 +287,7 @@ def adel():
     
 @app.route('/as',methods=['POST','GET'])
 def adds():
-    if session['ho'] == True:
+    if 'ho' in session:
         if request.method=='POST':
             if request.form.get("bk"):
                 return redirect("/ahom")
@@ -315,7 +315,7 @@ def adds():
     
 @app.route('/rs',methods=['POST','GET'])
 def dst():
-    if session['ho'] == True:
+    if 'ho' in session:
         cur=mysql.connection.cursor()
         cur.execute("select * from stock")
         mysql.connection.commit()
@@ -350,7 +350,7 @@ def dst():
     
 @app.route('/es',methods=['POST','GET'])
 def esk():
-    if session['ho'] == True:
+    if 'ho' in session:
         cur=mysql.connection.cursor()
         cur.execute("select * from stock")
         mysql.connection.commit()
@@ -548,7 +548,7 @@ def vall():
 
 @app.route('/vsk',methods=['POST','GET'])
 def vsk():
-    if session['ho'] == True:
+    if 'ho' in session:
         cur=mysql.connection.cursor()
         cur.execute("select * from stock")
         mysql.connection.commit()
@@ -694,7 +694,7 @@ def cart():
 @app.route('/order',methods=['POST','GET'])
 def orde():
     l=[]
-    if session['order'] == False or len(session['order'])==0:
+    if 'order' not in session or len(session['order'])==0:
         return redirect("/")
     else:
         if request.method=='POST':
@@ -776,7 +776,7 @@ def orde():
 
 @app.route('/os',methods=['POST','GET'])
 def es():
-    if session['ho'] == True:
+    if 'ho' in session:
         cur=mysql.connection.cursor()
         cur.execute("select * from dor where sta like 'Packed' or sta like 'Order Placed' or sta like  'Out for Delivery'")
         mysql.connection.commit()
@@ -821,7 +821,7 @@ def es():
 
 @app.route('/oh',methods=['POST','GET'])
 def esh():
-    if session['ho'] == True:
+    if 'ho' in session:
         cur=mysql.connection.cursor()
         cur.execute("select * from dor where sta like 'Delivered' or sta like 'Cancled by store' or sta like 'Cancled by User'")
         mysql.connection.commit()
