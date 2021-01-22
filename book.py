@@ -932,6 +932,28 @@ def trac():
             return redirect('/tkr')
     else:
         return render_template('track.html',h=h,l1=l1)    
+@app.route('/stk',methods=['POST','GET'])
+def tec():
+    if 'ho' in session:
+        cur=mysql.connection.cursor()
+        cur.execute("Select qua from dor where sta like 'Delivered'")
+        mysql.connection.commit()
+        r=cur.fetchall()
+        k=0
+        for i in r:
+            k=k+int(i['qua'])
+        cur=mysql.connection.cursor()
+        cur.execute("Select Quantity from stock")
+        mysql.connection.commit()
+        r=cur.fetchall()
+        s=0
+        for i in r:
+            s=s+int(i['Quantity'])
+        o=s+k
+        data = {'Total Stock' : 'Sold', 'Left Stocks' : s, 'Sold Stocks' : k}
+        return render_template("any.html",data=data,o=o)
+    else:
+        return redirect('/adlogin')
     
     
 if __name__=='__main__':
