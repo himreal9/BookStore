@@ -212,158 +212,179 @@ def log():
 
 @app.route('/ahom',methods=['POST','GET'])
 def ahom():
-    cur=mysql.connection.cursor()
-    cur.execute("select * from user")
-    mysql.connection.commit()
-    r=cur.fetchall()
-    return render_template("adminhome.html",r=r)
+    if session['ho'] == True:
+        cur=mysql.connection.cursor()
+        cur.execute("select * from user")
+        mysql.connection.commit()
+        r=cur.fetchall()
+        return render_template("adminhome.html",r=r)
+    else:
+        return redirect('/adlogin')
 
 @app.route('/addsub',methods=['POST','GET'])
 def sinup():
-    if request.method=='POST':
-        us = request.form['emal']            
-        cur=mysql.connection.cursor()
-        cur.execute("select * from user where unam like %s",(us,))
-        mysql.connection.commit()
-        r=cur.fetchall()
-        if len(r)>0:
-            flash("Email already exist")
-            return redirect('/addsub')
-        else:
-            fnam = request.form['fnam']
-            lnam = request.form['lnam']
-            nam=fnam+' '+lnam
-            no = request.form['no']
-            pp = request.form['pas']
-            cpp = request.form['cpas']
-            if request.form.get("ln"):
-                return redirect("/ahom")
-            if request.form.get("su"):
-                if pp==cpp:
-                    cur=mysql.connection.cursor()
-                    cur.execute("insert into user values(%s,%s,%s,%s)",(nam,no,us,pp))
-                    mysql.connection.commit()
+    if session['ho'] == True:
+        if request.method=='POST':
+            us = request.form['emal']            
+            cur=mysql.connection.cursor()
+            cur.execute("select * from user where unam like %s",(us,))
+            mysql.connection.commit()
+            r=cur.fetchall()
+            if len(r)>0:
+                flash("Email already exist")
+                return redirect('/addsub')
+            else:
+                fnam = request.form['fnam']
+                lnam = request.form['lnam']
+                nam=fnam+' '+lnam
+                no = request.form['no']
+                pp = request.form['pas']
+                cpp = request.form['cpas']
+                if request.form.get("ln"):
                     return redirect("/ahom")
-                else:
-                    flash("Passwords did not match")
-                    return redirect("/addsub")
+                if request.form.get("su"):
+                    if pp==cpp:
+                        cur=mysql.connection.cursor()
+                        cur.execute("insert into user values(%s,%s,%s,%s)",(nam,no,us,pp))
+                        mysql.connection.commit()
+                        return redirect("/ahom")
+                    else:
+                        flash("Passwords did not match")
+                        return redirect("/addsub")
+        else:
+            return render_template('sinup.html')
     else:
-        return render_template('sinup.html')
+        return redirect("/adlogin")
     
 @app.route('/adel',methods=['POST','GET'])
 def adel():
-    cur=mysql.connection.cursor()
-    cur.execute("select * from user")
-    mysql.connection.commit()
-    r=cur.fetchall()
-    h=['Name','Number','Username']
-    l1=[]
-    for i in r:
-        l=[i['Name'],i['Number'],i['unam']]
-        l1.append(l)
-    l1=l1[1:]
-    if request.method=='POST':
-        if request.form.get("dl"):
-            us = request.form['unam']
-            cur=mysql.connection.cursor()
-            cur.execute("delete from user where unam like %s",(us,))
-            mysql.connection.commit()
-            flash(f"Successfully deleted {us}")
-            return redirect('/adel')
-        elif request.form.get("bkk"):
-            return redirect('/ahom') 
+    if session['ho'] == True:
+        cur=mysql.connection.cursor()
+        cur.execute("select * from user")
+        mysql.connection.commit()
+        r=cur.fetchall()
+        h=['Name','Number','Username']
+        l1=[]
+        for i in r:
+            l=[i['Name'],i['Number'],i['unam']]
+            l1.append(l)
+        l1=l1[1:]
+        if request.method=='POST':
+            if request.form.get("dl"):
+                us = request.form['unam']
+                cur=mysql.connection.cursor()
+                cur.execute("delete from user where unam like %s",(us,))
+                mysql.connection.commit()
+                flash(f"Successfully deleted {us}")
+                return redirect('/adel')
+            elif request.form.get("bkk"):
+                return redirect('/ahom') 
+        else:
+            return render_template('Adel.html',h=h,l1=l1)
     else:
-        return render_template('Adel.html',h=h,l1=l1)
-
+        return redirect("/adlogin")
+    
+    
 @app.route('/as',methods=['POST','GET'])
 def adds():
-    if request.method=='POST':
-        if request.form.get("bk"):
-            return redirect("/ahom")
-        if request.form.get("ad"):
-            v1 = request.form['bno']
-            v2 = request.form['bn']
-            v3 = request.form['an']
-            v4 = request.form['edi']
-            v5 = request.form['pub']
-            v6 = request.form['pri']
-            v7 = request.form['gen']
-            v8 = request.form['qu']
-            v9 = request.form['url']
-            v10 = request.form['abu']
-            v11 = request.form['rec']
-            cur=mysql.connection.cursor()
-            cur.execute("insert into stock values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",(v1,v2,v3,v4,v5,v6,v7,v8,v9,v10,v11))
-            mysql.connection.commit()
-            flash(f"Successfully added {v2}")
-            return redirect("/as")
+    if session['ho'] == True:
+        if request.method=='POST':
+            if request.form.get("bk"):
+                return redirect("/ahom")
+            if request.form.get("ad"):
+                v1 = request.form['bno']
+                v2 = request.form['bn']
+                v3 = request.form['an']
+                v4 = request.form['edi']
+                v5 = request.form['pub']
+                v6 = request.form['pri']
+                v7 = request.form['gen']
+                v8 = request.form['qu']
+                v9 = request.form['url']
+                v10 = request.form['abu']
+                v11 = request.form['rec']
+                cur=mysql.connection.cursor()
+                cur.execute("insert into stock values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",(v1,v2,v3,v4,v5,v6,v7,v8,v9,v10,v11))
+                mysql.connection.commit()
+                flash(f"Successfully added {v2}")
+                return redirect("/as")
+        else:
+            return render_template('addstock.html')
     else:
-        return render_template('addstock.html')
+        return redirect("/adlogin")
     
 @app.route('/rs',methods=['POST','GET'])
 def dst():
-    cur=mysql.connection.cursor()
-    cur.execute("select * from stock")
-    mysql.connection.commit()
-    r=cur.fetchall()
-    h=['ISBN', 'Name', 'Author Name', 'Edition', 'Publication', 'Price','Genre','Quantity', 'Image_url','About','Recomendation']
-    l1=[]
-    for i in r:
-        l=[i['ISBN'], i['Name'], i['AName'], i['Edition'], i['Publication'], i['Price'], i['Genre'], i['Quantity'], i['Image_url'],i['About'],i['Rec']]
-        l1.append(l)
-    if request.method=='POST':
-        if request.form.get("dl"):
-            us = request.form['unam']
-            cur=mysql.connection.cursor()
-            cur.execute("select * from stock where ISBN like %s",(us,))
-            mysql.connection.commit()
-            r=cur.fetchall()
-            if len(r)>0:
-                flash(f"Successfully deleted {us} ISBN")
-                cur.execute("delete from stock where ISBN like %s",(us,))
+    if session['ho'] == True:
+        cur=mysql.connection.cursor()
+        cur.execute("select * from stock")
+        mysql.connection.commit()
+        r=cur.fetchall()
+        h=['ISBN', 'Name', 'Author Name', 'Edition', 'Publication', 'Price','Genre','Quantity', 'Image_url','About','Recomendation']
+        l1=[]
+        for i in r:
+            l=[i['ISBN'], i['Name'], i['AName'], i['Edition'], i['Publication'], i['Price'], i['Genre'], i['Quantity'], i['Image_url'],i['About'],i['Rec']]
+            l1.append(l)
+        if request.method=='POST':
+            if request.form.get("dl"):
+                us = request.form['unam']
+                cur=mysql.connection.cursor()
+                cur.execute("select * from stock where ISBN like %s",(us,))
                 mysql.connection.commit()
-                return redirect('/rs')
-            elif len(r)==0:
-                flash(f"No record found for ISBN : {us}")
-                return redirect('/rs')
-        elif request.form.get("bkk"):
-            return redirect('/ahom') 
+                r=cur.fetchall()
+                if len(r)>0:
+                    flash(f"Successfully deleted {us} ISBN")
+                    cur.execute("delete from stock where ISBN like %s",(us,))
+                    mysql.connection.commit()
+                    return redirect('/rs')
+                elif len(r)==0:
+                    flash(f"No record found for ISBN : {us}")
+                    return redirect('/rs')
+            elif request.form.get("bkk"):
+                return redirect('/ahom') 
+        else:
+            return render_template('dstock.html',h=h,l1=l1)
     else:
-        return render_template('dstock.html',h=h,l1=l1)
- 
+        return redirect("/adlogin")
+    
+    
 @app.route('/es',methods=['POST','GET'])
 def esk():
-    cur=mysql.connection.cursor()
-    cur.execute("select * from stock")
-    mysql.connection.commit()
-    r=cur.fetchall()
-    h=['ISBN', 'Name', 'Author Name', 'Edition', 'Publication', 'Price','Genre','Quantity', 'Image_url','About','Recomendation']
-    l1=[]
-    for i in r:
-        l=[i['ISBN'], i['Name'], i['AName'], i['Edition'], i['Publication'], i['Price'], i['Genre'], i['Quantity'], i['Image_url'],i['About'],i['Rec']]
-        l1.append(l)
-    if request.method=='POST':
-        if request.form.get("dl"):
-            us = request.form['unam']
-            fil = request.form['fil']
-            val = request.form['val']
-            cur=mysql.connection.cursor()
-            cur.execute("select * from stock where ISBN like %s",(us,))
-            mysql.connection.commit()
-            r=cur.fetchall()
-            if len(r)>0:
-                flash(f"Successfully edited {us} ISBN")
-                cur.execute(f"update stock set {fil}=%s where ISBN like %s",(val,us))
+    if session['ho'] == True:
+        cur=mysql.connection.cursor()
+        cur.execute("select * from stock")
+        mysql.connection.commit()
+        r=cur.fetchall()
+        h=['ISBN', 'Name', 'Author Name', 'Edition', 'Publication', 'Price','Genre','Quantity', 'Image_url','About','Recomendation']
+        l1=[]
+        for i in r:
+            l=[i['ISBN'], i['Name'], i['AName'], i['Edition'], i['Publication'], i['Price'], i['Genre'], i['Quantity'], i['Image_url'],i['About'],i['Rec']]
+            l1.append(l)
+        if request.method=='POST':
+            if request.form.get("dl"):
+                us = request.form['unam']
+                fil = request.form['fil']
+                val = request.form['val']
+                cur=mysql.connection.cursor()
+                cur.execute("select * from stock where ISBN like %s",(us,))
                 mysql.connection.commit()
-                return redirect('/es')
-            elif len(r)==0:
-                flash(f"No record found for ISBN : {us}")
-                return redirect('/es')
-        elif request.form.get("bkk"):
-            return redirect('/ahom') 
+                r=cur.fetchall()
+                if len(r)>0:
+                    flash(f"Successfully edited {us} ISBN")
+                    cur.execute(f"update stock set {fil}=%s where ISBN like %s",(val,us))
+                    mysql.connection.commit()
+                    return redirect('/es')
+                elif len(r)==0:
+                    flash(f"No record found for ISBN : {us}")
+                    return redirect('/es')
+            elif request.form.get("bkk"):
+                return redirect('/ahom') 
+        else:
+            return render_template('estock.html',h=h,l1=l1)
     else:
-        return render_template('estock.html',h=h,l1=l1)
- 
+        return redirect("/adlogin")
+    
+    
 @app.route('/com',methods=['POST','GET'])
 def com():
     flash("Comics : ")
@@ -527,16 +548,19 @@ def vall():
 
 @app.route('/vsk',methods=['POST','GET'])
 def vsk():
-    cur=mysql.connection.cursor()
-    cur.execute("select * from stock")
-    mysql.connection.commit()
-    r=cur.fetchall()
-    h=['ISBN', 'Name', 'Author Name', 'Edition', 'Publication', 'Price','Genre','Quantity', 'Image_url','About','Recomendation']
-    l1=[]
-    for i in r:
-        l=[i['ISBN'], i['Name'], i['AName'], i['Edition'], i['Publication'], i['Price'], i['Genre'], i['Quantity'], i['Image_url'],i['About'],i['Rec']]
-        l1.append(l)
-    return render_template('vskk.html',h=h,l1=l1)
+    if session['ho'] == True:
+        cur=mysql.connection.cursor()
+        cur.execute("select * from stock")
+        mysql.connection.commit()
+        r=cur.fetchall()
+        h=['ISBN', 'Name', 'Author Name', 'Edition', 'Publication', 'Price','Genre','Quantity', 'Image_url','About','Recomendation']
+        l1=[]
+        for i in r:
+            l=[i['ISBN'], i['Name'], i['AName'], i['Edition'], i['Publication'], i['Price'], i['Genre'], i['Quantity'], i['Image_url'],i['About'],i['Rec']]
+            l1.append(l)
+        return render_template('vskk.html',h=h,l1=l1)
+    else:
+        return redirect("adlogin")
     
 @app.route('/reset',methods=['POST','GET'])
 def ress():
@@ -670,7 +694,7 @@ def cart():
 @app.route('/order',methods=['POST','GET'])
 def orde():
     l=[]
-    if len(session['order'])==0:
+    if session['order'] == False or len(session['order'])==0:
         return redirect("/")
     else:
         if request.method=='POST':
@@ -752,68 +776,74 @@ def orde():
 
 @app.route('/os',methods=['POST','GET'])
 def es():
-    cur=mysql.connection.cursor()
-    cur.execute("select * from dor where sta like 'Packed' or sta like 'Order Placed' or sta like  'Out for Delivery'")
-    mysql.connection.commit()
-    r=cur.fetchall()
-    h=["Order ID","Name","ISBN","Book","Quantity",'Total','Mobile Number','Email','address', 'status']
-    l1=[]
-    for i in r:
-        l=[i['orid'], i['name'], i['isbn'], i['bnam'], i['qua'], i['total'], i['mno'], i['emal'], i['adres'],i['sta']]
-        l1.append(l)
-    if request.method=='POST':
-        if request.form.get("dl"):
-            us = request.form['st']
-            val = request.form['sta']
-            cur=mysql.connection.cursor()
-            cur.execute("select * from dor where orid like %s",(us,))
-            mysql.connection.commit()
-            r=cur.fetchall()
-            if len(r)>0:
-                flash(f"Successfully edited {us}")
-                cur.execute("update dor set sta=%s where orid like %s",(val,us))
+    if session['ho'] == True:
+        cur=mysql.connection.cursor()
+        cur.execute("select * from dor where sta like 'Packed' or sta like 'Order Placed' or sta like  'Out for Delivery'")
+        mysql.connection.commit()
+        r=cur.fetchall()
+        h=["Order ID","Name","ISBN","Book","Quantity",'Total','Mobile Number','Email','address', 'status']
+        l1=[]
+        for i in r:
+            l=[i['orid'], i['name'], i['isbn'], i['bnam'], i['qua'], i['total'], i['mno'], i['emal'], i['adres'],i['sta']]
+            l1.append(l)
+        if request.method=='POST':
+            if request.form.get("dl"):
+                us = request.form['st']
+                val = request.form['sta']
+                cur=mysql.connection.cursor()
+                cur.execute("select * from dor where orid like %s",(us,))
                 mysql.connection.commit()
-                if val=="Delivered":
-                    cur.execute("select * from dor where orid like %s",(us,))
+                r=cur.fetchall()
+                if len(r)>0:
+                    flash(f"Successfully edited {us}")
+                    cur.execute("update dor set sta=%s where orid like %s",(val,us))
                     mysql.connection.commit()
-                    ro=cur.fetchall()
-                    cur.execute("select * from stock where ISBN like %s",(ro[0]["isbn"],))
-                    mysql.connection.commit()
-                    rs=cur.fetchall()
-                    v=int(rs[0]["Quantity"])-int(ro[0]["qua"])
-                    cur.execute("update stock set Quantity=%s where ISBN like %s",(str(v),ro[0]['isbn']))
-                    mysql.connection.commit()
-                return redirect('/os')
-            elif len(r)==0:
-                flash(f"No record found for order no. : {us}")
-                return redirect('/os')
-        elif request.form.get("bkk"):
-            return redirect('/ahom') 
+                    if val=="Delivered":
+                        cur.execute("select * from dor where orid like %s",(us,))
+                        mysql.connection.commit()
+                        ro=cur.fetchall()
+                        cur.execute("select * from stock where ISBN like %s",(ro[0]["isbn"],))
+                        mysql.connection.commit()
+                        rs=cur.fetchall()
+                        v=int(rs[0]["Quantity"])-int(ro[0]["qua"])
+                        cur.execute("update stock set Quantity=%s where ISBN like %s",(str(v),ro[0]['isbn']))
+                        mysql.connection.commit()
+                    return redirect('/os')
+                elif len(r)==0:
+                    flash(f"No record found for order no. : {us}")
+                    return redirect('/os')
+            elif request.form.get("bkk"):
+                return redirect('/ahom') 
+        else:
+            return render_template('ordsta.html',h=h,l1=l1)
     else:
-        return render_template('ordsta.html',h=h,l1=l1)
+        return redirect("/adlogin")
 
 @app.route('/oh',methods=['POST','GET'])
 def esh():
-    cur=mysql.connection.cursor()
-    cur.execute("select * from dor where sta like 'Delivered' or sta like 'Cancled by store' or sta like 'Cancled by User'")
-    mysql.connection.commit()
-    r=cur.fetchall()
-    h=["Order ID","Name","ISBN","Book","Quantity",'Total','Mobile Number','Email','address', 'status']
-    l1=[]
-    for i in r:
-        l=[i['orid'], i['name'], i['isbn'], i['bnam'], i['qua'], i['total'], i['mno'], i['emal'], i['adres'],i['sta']]
-        l1.append(l)
-    if request.method=='POST':
-        if request.form.get("dl"):
-            cur=mysql.connection.cursor()
-            cur.execute("delete from dor where sta like 'Delivered' or sta like 'Cancled by store'")
-            flash("Successfully deleted")
-            mysql.connection.commit()
-            return redirect('/os')
-        elif request.form.get("bkk"):
-            return redirect('/ahom') 
+    if session['ho'] == True:
+        cur=mysql.connection.cursor()
+        cur.execute("select * from dor where sta like 'Delivered' or sta like 'Cancled by store' or sta like 'Cancled by User'")
+        mysql.connection.commit()
+        r=cur.fetchall()
+        h=["Order ID","Name","ISBN","Book","Quantity",'Total','Mobile Number','Email','address', 'status']
+        l1=[]
+        for i in r:
+            l=[i['orid'], i['name'], i['isbn'], i['bnam'], i['qua'], i['total'], i['mno'], i['emal'], i['adres'],i['sta']]
+            l1.append(l)
+        if request.method=='POST':
+            if request.form.get("dl"):
+                cur=mysql.connection.cursor()
+                cur.execute("delete from dor where sta like 'Delivered' or sta like 'Cancled by store'")
+                flash("Successfully deleted")
+                mysql.connection.commit()
+                return redirect('/os')
+            elif request.form.get("bkk"):
+                return redirect('/ahom') 
+        else:
+            return render_template('odrhis.html',h=h,l1=l1)
     else:
-        return render_template('odrhis.html',h=h,l1=l1)
+        return redirect('/adlogin')
 
 @app.route('/tk',methods=['POST','GET'])
 def track():
