@@ -938,8 +938,7 @@ def trac():
                 flash(f"No record found for order no. : {d}")
                 return redirect('/tkr')
         if request.form.get("bkk"):
-            
-            return redirect('/tkr')
+            return redirect('/tk')
     else:
         return render_template('track.html',h=h,l1=l1)    
 @app.route('/stk',methods=['POST','GET'])
