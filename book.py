@@ -768,7 +768,7 @@ def orde():
                  server.quit()
                  session['det']=[]
                 
-                 msgtxt=str(l)+'\n'+"Total Amount: Rs."+str(ttt)+'\n'+'Order IDs='+s+'\n'+'From '+nam+'\n'+add+'\n'+'Contact: '+pd+'\n'+ed
+                 msgt=str(l)+'\n'+"Total Amount: Rs."+str(ttt)+'\n'+'Order IDs='+s+'\n'+'From '+nam+'\n'+add+'\n'+'Contact: '+pd+'\n'+ed
                  url='https://www.fast2sms.com/dev/bulk'
                  para={'authorization':'dFjveUQ2gRbokDNMJ4CALmYfZSI3VpBOuWyPwznlHTrExG5cisLjXZOsiGHhSMgaJNu2Ve7Q6nd9obPr',
                           'sender_id':'FSTSMS',
