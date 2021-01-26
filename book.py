@@ -768,11 +768,11 @@ def orde():
                  server.quit()
                  session['det']=[]
                 
-                 msgt=str(l)+'\n'+"Total Amount: Rs."+str(ttt)+'\n'+'Order IDs='+s+'\n'+'From '+nam+'\n'+add+'\n'+'Contact: '+pd+'\n'+ed
+                 msg1='Your open Order IDs='+s+'\n'+str(l)+'\n'+"Total Amount: Rs."+str(ttt)+' \n Thank you for chosing us.\nBrilliants Books'
                  url='https://www.fast2sms.com/dev/bulk'
                  para={'authorization':'dFjveUQ2gRbokDNMJ4CALmYfZSI3VpBOuWyPwznlHTrExG5cisLjXZOsiGHhSMgaJNu2Ve7Q6nd9obPr',
                           'sender_id':'FSTSMS',
-                          'message':msgt,
+                          'message':msg1,
                           'language':'english',
                           'route':'p',
                           'numbers':pd}
