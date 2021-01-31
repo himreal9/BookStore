@@ -7,7 +7,7 @@
 <p>
 &nbsp&nbsp&nbsp&nbsp{% with messages=get_flashed_messages() %}
         {% if messages %}
-        {{messages[-1]}}
+        {{messages[0]}}
         {% endif %}
         {% endwith %}
 </p>
