@@ -22,6 +22,10 @@
 </div>
 
 {% elif session['p']==0 %}
+{% with messages=get_flashed_messages() %}
+{% if messages %}
+        {% endif %}
+        {% endwith %}
 <div class="im0">
 <img src={{url_for('static',filename='fff.gif')}}>
 </div>
