@@ -23,13 +23,16 @@ def con():
                 mysql.connection.commit()
                 r=cur.fetchall()
                 for i in r:
-                    l1 = ' '.join([str(elem) for elem in [i[key] for key in ['ISBN','Name','AName','Publication','Genre','About']]])
-                    o=l1.replace(" ", "")
-                    o=o.lower()
-                    for j in d.split():
-                        j=j.lower()
+                    l1 =' '.join([str(elem) for elem in [i[key] for key in ['ISBN','Name','AName','Publication','Genre','About']]])
+                    p='`~!@$%^&*()_-+={}:<>?||[]\;#,./'
+                    for q in l1:
+                        if q not in p:
+                            l1=l1+q
+                    o=l1.lower()
+                    for j in d.split(' '):
                         if j in o:
                             l.append(i)
+                            break
                 session['s']=l
                 session['p']=len(session['s'])
                 return redirect("/s")
@@ -96,14 +99,17 @@ def not_found(e):
             cur.execute("select * from stock")
             mysql.connection.commit()
             rm=cur.fetchall()
-            for i in rm:
-                l1 = ' '.join([str(elem) for elem in [i[key] for key in ['ISBN','Name','AName','Publication','Genre','About']]])
-                o=l1.replace(" ", "") 
-                o=o.lower()
-                for j in d.split():
-                    j=j.lower()
+            for i in r:
+                l1 =' '.join([str(elem) for elem in [i[key] for key in ['ISBN','Name','AName','Publication','Genre','About']]])
+                p='`~!@$%^&*()_-+={}:<>?||[]\;#,./'
+                for q in l1:
+                    if q not in p:
+                        l1=l1+q
+                o=l1.lower()
+                for j in d.split(' '):
                     if j in o:
                         l.append(i)
+                        break
             session['s']=l
             session['p']=len(session['s'])
             return redirect("/s")
@@ -141,13 +147,16 @@ def index():
             mysql.connection.commit()
             r=cur.fetchall()
             for i in r:
-                l1 = ' '.join([str(elem) for elem in [i[key] for key in ['ISBN','Name','AName','Publication','Genre','About']]])
-                o=l1.replace(" ", "")
-                o=o.lower()
-                for j in d.split():
-                    j=j.lower()
+                l1 =' '.join([str(elem) for elem in [i[key] for key in ['ISBN','Name','AName','Publication','Genre','About']]])
+                p='`~!@$%^&*()_-+={}:<>?||[]\;#,./'
+                for q in l1:
+                    if q not in p:
+                        l1=l1+q
+                o=l1.lower()
+                for j in d.split(' '):
                     if j in o:
                         l.append(i)
+                        break
             session['s']=l
             session['p']=len(session['s'])
             return redirect("/s")
@@ -167,12 +176,16 @@ def ser():
             mysql.connection.commit()
             r=cur.fetchall()
             for i in r:
-                l1 = ' '.join([str(elem) for elem in [i[key] for key in ['ISBN','Name','AName','Publication','Genre','About']]])
-                o=l1.replace(" ", "") 
-                o.lower()
-                for j in d.split():
+                l1 =' '.join([str(elem) for elem in [i[key] for key in ['ISBN','Name','AName','Publication','Genre','About']]])
+                p='`~!@$%^&*()_-+={}:<>?||[]\;#,./'
+                for q in l1:
+                    if q not in p:
+                        l1=l1+q
+                o=l1.lower()
+                for j in d.split(' '):
                     if j in o:
                         l.append(i)
+                        break
             session['s']=l
             session['p']=len(session['s'])
             return redirect("/s")
@@ -404,13 +417,16 @@ def com():
             mysql.connection.commit()
             r=cur.fetchall()
             for i in r:
-                l1 = ' '.join([str(elem) for elem in [i[key] for key in ['ISBN','Name','AName','Publication','Genre','About']]])
-                o=l1.replace(" ", "")
-                o=o.lower()
-                for j in d.split():
-                    j=j.lower()
+                l1 =' '.join([str(elem) for elem in [i[key] for key in ['ISBN','Name','AName','Publication','Genre','About']]])
+                p='`~!@$%^&*()_-+={}:<>?||[]\;#,./'
+                for q in l1:
+                    if q not in p:
+                        l1=l1+q
+                o=l1.lower()
+                for j in d.split(' '):
                     if j in o:
                         l.append(i)
+                        break
             session['s']=l
             session['p']=len(session['s'])
             return redirect("/s")
@@ -436,13 +452,16 @@ def nov():
             mysql.connection.commit()
             r=cur.fetchall()
             for i in r:
-                l1 = ' '.join([str(elem) for elem in [i[key] for key in ['ISBN','Name','AName','Publication','Genre','About']]])
-                o=l1.replace(" ", "")
-                o=o.lower()
-                for j in d.split():
-                    j=j.lower()
+                l1 =' '.join([str(elem) for elem in [i[key] for key in ['ISBN','Name','AName','Publication','Genre','About']]])
+                p='`~!@$%^&*()_-+={}:<>?||[]\;#,./'
+                for q in l1:
+                    if q not in p:
+                        l1=l1+q
+                o=l1.lower()
+                for j in d.split(' '):
                     if j in o:
                         l.append(i)
+                        break
             session['s']=l
             session['p']=len(session['s'])
             return redirect("/s")
@@ -468,13 +487,16 @@ def gen():
             mysql.connection.commit()
             r=cur.fetchall()
             for i in r:
-                l1 = ' '.join([str(elem) for elem in [i[key] for key in ['ISBN','Name','AName','Publication','Genre','About']]])
-                o=l1.replace(" ", "")
-                o=o.lower()
-                for j in d.split():
-                    j=j.lower()
+                l1 =' '.join([str(elem) for elem in [i[key] for key in ['ISBN','Name','AName','Publication','Genre','About']]])
+                p='`~!@$%^&*()_-+={}:<>?||[]\;#,./'
+                for q in l1:
+                    if q not in p:
+                        l1=l1+q
+                o=l1.lower()
+                for j in d.split(' '):
                     if j in o:
                         l.append(i)
+                        break
             session['s']=l
             session['p']=len(session['s'])
             return redirect("/s")
@@ -501,13 +523,16 @@ def stu():
                 mysql.connection.commit()
                 r=cur.fetchall()
                 for i in r:
-                    l1 = ' '.join([str(elem) for elem in [i[key] for key in ['ISBN','Name','AName','Publication','Genre','About']]])
-                    o=l1.replace(" ", "")
-                    o=o.lower()
-                    for j in d.split():
-                        j=j.lower()
+                    l1 =' '.join([str(elem) for elem in [i[key] for key in ['ISBN','Name','AName','Publication','Genre','About']]])
+                    p='`~!@$%^&*()_-+={}:<>?||[]\;#,./'
+                    for q in l1:
+                        if q not in p:
+                            l1=l1+q
+                    o=l1.lower()
+                    for j in d.split(' '):
                         if j in o:
                             l.append(i)
+                            break
                 session['s']=l
                 session['p']=len(session['s'])
                 return redirect("/s")
@@ -533,13 +558,16 @@ def vall():
             mysql.connection.commit()
             r=cur.fetchall()
             for i in r:
-                l1 = ' '.join([str(elem) for elem in [i[key] for key in ['ISBN','Name','AName','Publication','Genre','About']]])
-                o=l1.replace(" ", "") 
-                o=o.lower()
-                for j in d.split():
-                    j=j.lower()
+                l1 =' '.join([str(elem) for elem in [i[key] for key in ['ISBN','Name','AName','Publication','Genre','About']]])
+                p='`~!@$%^&*()_-+={}:<>?||[]\;#,./'
+                for q in l1:
+                    if q not in p:
+                        l1=l1+q
+                o=l1.lower()
+                for j in d.split(' '):
                     if j in o:
                         l.append(i)
+                        break
             session['s']=l
             session['p']=len(session['s'])
             return redirect("/s")
@@ -634,12 +662,16 @@ def abt():
             mysql.connection.commit()
             rm=cur.fetchall()
             for i in rm:
-                l1 = ''.join([str(elem) for elem in [i[key] for key in ['ISBN','Name','AName','Publication','Genre','About']]])
-                o=l1.replace(" ", "") 
-                o.lower()
-                for j in d.split():
+                l1 =' '.join([str(elem) for elem in [i[key] for key in ['ISBN','Name','AName','Publication','Genre','About']]])
+                p='`~!@$%^&*()_-+={}:<>?||[]\;#,./'
+                for q in l1:
+                    if q not in p:
+                        l1=l1+q
+                o=l1.lower()
+                for j in d.split(' '):
                     if j in o:
                         l.append(i)
+                        break
             session['s']=l
             session['p']=len(session['s'])
             return redirect("/s")
@@ -678,13 +710,16 @@ def cart():
                 mysql.connection.commit()
                 r=cur.fetchall()
                 for i in r:
-                    l1 = ' '.join([str(elem) for elem in [i[key] for key in ['ISBN','Name','AName','Publication','Genre','About']]])
-                    o=l1.replace(" ", "")
-                    o=o.lower()
-                    for j in d.split():
-                        j=j.lower()
+                    l1 =' '.join([str(elem) for elem in [i[key] for key in ['ISBN','Name','AName','Publication','Genre','About']]])
+                    p='`~!@$%^&*()_-+={}:<>?||[]\;#,./'
+                    for q in l1:
+                        if q not in p:
+                            l1=l1+q
+                    o=l1.lower()
+                    for j in d.split(' '):
                         if j in o:
                             l.append(i)
+                            break
                 session['s']=l
                 session['p']=len(session['s'])
                 return redirect("/s")
@@ -706,13 +741,16 @@ def orde():
                 mysql.connection.commit()
                 r=cur.fetchall()
                 for i in r:
-                    l1 = ' '.join([str(elem) for elem in [i[key] for key in ['ISBN','Name','AName','Publication','Genre','About']]])
-                    o=l1.replace(" ", "")
-                    o=o.lower()
-                    for j in d.split():
-                        j=j.lower()
+                    l1 =' '.join([str(elem) for elem in [i[key] for key in ['ISBN','Name','AName','Publication','Genre','About']]])
+                    p='`~!@$%^&*()_-+={}:<>?||[]\;#,./'
+                    for q in l1:
+                        if q not in p:
+                            l1=l1+q
+                    o=l1.lower()
+                    for j in d.split(' '):
                         if j in o:
                             l.append(i)
+                            break
                 session['s']=l
                 session['p']=len(session['s'])
                 return redirect("/s")
@@ -866,13 +904,16 @@ def track():
             mysql.connection.commit()
             rj=cur.fetchall()
             for i in rj:
-                l1 = ' '.join([str(elem) for elem in [i[key] for key in ['ISBN','Name','AName','Publication','Genre','About']]])
-            o=l1.replace(" ", "")
-            o=o.lower()
-            for j in sd.split():
-                j=j.lower()
-            if j in o:
-                l.append(i)
+                l1 =' '.join([str(elem) for elem in [i[key] for key in ['ISBN','Name','AName','Publication','Genre','About']]])
+                p='`~!@$%^&*()_-+={}:<>?||[]\;#,./'
+                for q in l1:
+                    if q not in p:
+                        l1=l1+q
+                o=l1.lower()
+                for j in sd.split(' '):
+                    if j in o:
+                        l.append(i)
+                        break
             session['s']=l
             session['p']=len(session['s'])
             return redirect("/s")
@@ -912,13 +953,16 @@ def trac():
                 mysql.connection.commit()
                 rs=cur.fetchall()
                 for i in rs:
-                    l2 = ' '.join([str(elem) for elem in [i[key] for key in ['ISBN','Name','AName','Publication','Genre','About']]])
-                    o=l2.replace(" ", "")
-                    o=o.lower()
-                    for j in ds.split():
-                        j=j.lower()
+                    l2 =' '.join([str(elem) for elem in [i[key] for key in ['ISBN','Name','AName','Publication','Genre','About']]])
+                    p='`~!@$%^&*()_-+={}:<>?||[]\;#,./'
+                    for q in l2:
+                        if q not in p:
+                            l2=l2+q
+                    o=l2.lower()
+                    for j in ds.split(' '):
                         if j in o:
                             l.append(i)
+                            break
                 session['s']=l
                 session['p']=len(session['s'])
                 return redirect("/s")
