@@ -29,14 +29,14 @@
 		<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 		 </div>
-	    <input class="form-control" name="pas" placeholder="Password" type="New password" pattern=".{8,}" oninvalid="setCustomValidity('Password should contain minimun 8 characters')" oninput="setCustomValidity('')" required>
+	    <input class="form-control" name="pas" placeholder="NewPassword" type="password" pattern=".{8,}" oninvalid="setCustomValidity('Password should contain minimun 8 characters')" oninput="setCustomValidity('')" required>
 	</div>
 	<br>
 	<div class="input-group">
 		<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 		 </div>
-	    <input class="form-control" name="cpas" placeholder="Confirm Password" type="Confirm password">
+	    <input class="form-control" name="cpas" placeholder="Confirm Password" type="password">
 	</div>
 	{% with messages=get_flashed_messages() %}
                 {% if messages %}
