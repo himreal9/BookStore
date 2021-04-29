@@ -101,7 +101,7 @@ def not_found(e):
             cur.execute("select * from stock")
             mysql.connection.commit()
             rm=cur.fetchall()
-            for i in r:
+            for i in rm:
                 l1 =' '.join([str(elem) for elem in [i[key] for key in ['ISBN','Name','AName','Publication','Genre','About']]])
                 p='`~!@$%^&*()_-+={}:<>?||[]\;#,./'
                 for q in l1:
