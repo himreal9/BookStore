@@ -46,6 +46,7 @@ def con():
             msg['From'] = 'Brilliant Books'
             msg['To'] = toaddr
             server = smtplib.SMTP('smtp.gmail.com', 587)
+            server.ehlo()
             server.starttls()
             server.login("brilliantbooks0@gmail.com", passwor)
             server.send_message(msg)
