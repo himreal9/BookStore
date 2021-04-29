@@ -37,7 +37,7 @@ def con():
                 session['p']=len(session['s'])
                 return redirect("/s")
         if request.form.get("sub"):
-            """
+            
             toaddr  = request.form['txtEmail']
             passwor = "bbb@54321"
             msg = EmailMessage()
@@ -64,7 +64,7 @@ def con():
             server.login("brilliantbooks0@gmail.com", password)
             server.send_message(msg)
             server.quit()
-            """
+            
             flash("Thank you for connecting with us")
             return redirect('/con')
     else:
