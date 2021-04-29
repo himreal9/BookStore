@@ -37,6 +37,7 @@ def con():
                 session['p']=len(session['s'])
                 return redirect("/s")
         if request.form.get("sub"):
+            """
             toaddr  = request.form['txtEmail']
             passwor = "bbb@54321"
             msg = EmailMessage()
@@ -46,7 +47,6 @@ def con():
             msg['From'] = 'Brilliant Books'
             msg['To'] = toaddr
             server = smtplib.SMTP('smtp.gmail.com', 587)
-            server.ehlo()
             server.starttls()
             server.login("brilliantbooks0@gmail.com", passwor)
             server.send_message(msg)
@@ -64,6 +64,7 @@ def con():
             server.login("brilliantbooks0@gmail.com", password)
             server.send_message(msg)
             server.quit()
+            """
             flash("Thank you for connecting with us")
             return redirect('/con')
     else:
@@ -607,6 +608,7 @@ def ress():
                 ko=ko+i
             session['ko']=ko
             if len(r)>0:
+                """
                 toaddr  =us
                 passwor = "bbb@54321"
                 msg = EmailMessage()
@@ -620,7 +622,8 @@ def ress():
                 server.login("brilliantbooks0@gmail.com", passwor)
                 server.send_message(msg)
                 server.quit()
-                flash("OTP send to your mail")
+                """
+                flash(ko+":OTP send to your mail")
                 return redirect('/reset')
             else:
                 flash("Email not registered")
@@ -779,6 +782,7 @@ def orde():
                  s=''
                  for i in rm:
                      s=s+str(i['orid'])+","
+                 """
                  toaddr  = ed
                  passwor = "bbb@54321"
                  msg = EmailMessage()
@@ -806,7 +810,7 @@ def orde():
                  server.send_message(msg)
                  server.quit()
                  session['det']=[]
-                
+                 """
                  msg1='Your open Order IDs='+s+'\n'+str(l)+'\n'+"Total Amount: Rs."+str(ttt)+' \n Thank you for chosing us.\nBrilliants Books'
                  url='https://www.fast2sms.com/dev/bulk'
                  para={'authorization':'dFjveUQ2gRbokDNMJ4CALmYfZSI3VpBOuWyPwznlHTrExG5cisLjXZOsiGHhSMgaJNu2Ve7Q6nd9obPr',
