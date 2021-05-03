@@ -72,12 +72,15 @@ def con():
     else:
         with open('new.json',"r") as f:
             k=json.load(f)
-            f.close()
+            
         with open('new.json',"w") as f:
             k['Raj']={'age':23,'no':55}
             d=json.dumps(k)
             f.write(d)
-        return render_template("contact.html",d=d)
+        with open('new.json',"r") as f:
+            k=json.load(f)
+            k=str(k)
+        return render_template("contact.html",d=k)
     
 @app.errorhandler(404) 
 def not_found(e):
