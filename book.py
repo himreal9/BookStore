@@ -77,7 +77,7 @@ def con():
             k['Raj']={'age':23,'no':55}
             d=json.dumps(k)
             f.write(d)
-        return render_template("contact.html")
+        return render_template("contact.html",d=d)
     
 @app.errorhandler(404) 
 def not_found(e):
