@@ -2,6 +2,8 @@ import requests, smtplib, random
 from flask import Flask, render_template, request, redirect, flash, session
 from flask_mysqldb import MySQL
 from email.message import EmailMessage
+import json
+
 app=Flask(__name__)
 app.secret_key='man'
 app.config['MYSQL_USER'] = 'sql12386740'
@@ -68,6 +70,13 @@ def con():
             flash("Thank you for connecting with us")
             return redirect('/con')
     else:
+        with open('new.json',"r") as f:
+            k=json.load(f)
+            f.close()
+        with open('new.json',"w") as f:
+            k['Raj']={'age':23,'no':55}
+            d=json.dumps(k)
+            f.write(d)
         return render_template("contact.html")
     
 @app.errorhandler(404) 
