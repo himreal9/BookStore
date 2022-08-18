@@ -5,7 +5,7 @@ Go to --> https://books-o.herokuapp.com/
 Screen Short:
 1. Homepage :
 
-![image](https://github.com/himreal9/BookStore/blob/main/Brilliant%20Books-Home-Src.jpg)
+![image](https://github.com/himreal9/snakebites/blob/main/SnakeBites.png)
 
 2. SuperAdmin ControlRoom :
 
